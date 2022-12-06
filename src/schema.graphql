@@ -1,0 +1,43 @@
+type User {
+    id: String!,
+    name: String!,
+    age: Int!,
+    posts: [Post!]!,
+    comments: [Comment!]!,
+    reactions: [Reaction!]!
+}
+
+type Post {
+    id: String!,
+    text: String!,
+    user: User!,
+    reactions: [Reaction!]!,
+    comments: [Comment!]!, 
+}
+
+type Comment {
+    id: String!,
+    text: String!,
+    post: Post!,
+    user: User!,
+}
+
+type Reaction {
+    id: String!,
+    type: String!,
+    post: Post!,
+    user: User!,
+}
+
+type PercentualReaction {
+    reactions: [Reaction!]!,
+    likes: String!,
+    dislikes: String!,
+}
+
+type Query {
+    listUsers: [User!]!,
+    listPosts: [Post!]!,
+    listComments: [Comment!]!,
+    reactionPercentual: PercentualReaction!,
+}
